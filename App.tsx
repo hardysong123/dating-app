@@ -2,7 +2,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { UserProfile, ViewState, Message, Match } from './types';
 import { MOCK_USERS } from './constants';
-import LandingView from './views/LandingView';
 import RegisterView from './views/RegisterView';
 import DiscoveryView from './views/DiscoveryView';
 import MessagesView from './views/MessagesView';
