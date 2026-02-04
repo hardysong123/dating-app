@@ -1,8 +1,0 @@
-{
-  "name": "TransUnity - Safe Dating & Community",
-  "description": "A dedicated, safe, and inclusive dating and community platform for the transgender and non-binary community, featuring AI-assisted profile building and location-based discovery.",
-  "requestFramePermissions": [
-    "camera",
-    "geolocation"
-  ]
-}
