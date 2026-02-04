@@ -1,35 +1,34 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { UserProfile, ViewState, Message, Match } from './types';
-import { MOCK_USERS } from './constants';
+import React, { useState } from 'react';
+
+import RegisterView from './views/RegisterView';
+import DiscoveryView from './views/DiscoveryView';
+import MessagesView from './views/MessagesView';
+import ChatRoomView from './views/ChatRoomView';
+import ProfileView from './views/ProfileView';
+import BottomNav from './components/BottomNav';
+
+type ViewState =
+  | 'register'
+  | 'discovery'
+  | 'messages'
+  | 'chat'
+  | 'profile';
 
 const App: React.FC = () => {
-  const [view, setView] = useState<ViewState>('landing');
-  const [currentUser, setCurrentUser] = useState<UserProfile | null>(null);
-  const [matches, setMatches] = useState<Match[]>([]);
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [activeChatUserId, setActiveChatUserId] = useState<string | null>(null);
-  const [swipedUserIds, setSwipedUserIds] = useState<Set<string>>(new Set());
-  const [maxDistance, setMaxDistance] = useState<number>(10);
-
-  useEffect(() => {
-    const savedUser = localStorage.getItem('transunity_user');
-    if (savedUser) {
-      setCurrentUser(JSON.parse(savedUser));
-      setView('discovery');
-    }
-  }, []);
-
-  const filteredUsers = useMemo(() => {
-    return MOCK_USERS.filter(
-      u => !swipedUserIds.has(u.id) && (u.distance || 0) <= maxDistance
-    );
-  }, [swipedUserIds, maxDistance]);
+  const [view, setView] = useState<ViewState>('register');
 
   return (
-    <div style={{ padding: 40 }}>
-      <h1>Dating App is running 🚀</h1>
-      <p>Netlify deploy works</p>
-      <p>Status: stable build</p>
+    <div style={{ padding: 20 }}>
+      {view === 'register' && <RegisterView />}
+      {view === 'discovery' && <DiscoveryView />}
+      {view === 'messages' && <MessagesView />}
+      {view === 'chat' && <ChatRoomView />}
+      {view === 'profile' && <ProfileView />}
+
+      <BottomNav
+        activeTab={view}
+        onTabChange={(v: string) => setView(v as ViewState)}
+      />
     </div>
   );
 };
