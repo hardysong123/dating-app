@@ -92,48 +92,11 @@ const App: React.FC = () => {
   }, [swipedUserIds, maxDistance]);
 
   return (
-    <div className="flex flex-col h-screen max-w-md mx-auto bg-white shadow-xl relative overflow-hidden">
-      <main className="flex-1 overflow-y-auto pb-20">
-        {view === 'landing' && <LandingView onGetStarted={() => setView('register')} />}
-        {view === 'register' && <RegisterView onComplete={handleRegister} />}
-        {view === 'discovery' && (
-          <DiscoveryView 
-            users={filteredUsers} 
-            maxDistance={maxDistance}
-            onDistanceChange={setMaxDistance}
-            onMatch={handleMatch}
-            onPass={handleSwipeLeft}
-          />
-        )}
-        {view === 'messages' && (
-          <MessagesView 
-            matches={matches} 
-            allUsers={MOCK_USERS} 
-            messages={messages}
-            onSelectChat={openChat} 
-          />
-        )}
-        {view === 'chat' && activeChatUserId && (
-          <ChatRoomView 
-            user={MOCK_USERS.find(u => u.id === activeChatUserId)!} 
-            messages={messages.filter(m => 
-              (m.senderId === activeChatUserId && m.receiverId === currentUser?.id) ||
-              (m.senderId === currentUser?.id && m.receiverId === activeChatUserId)
-            )}
-            onSendMessage={sendMessage}
-            onBack={() => setView('messages')}
-          />
-        )}
-        {view === 'profile' && currentUser && (
-          <ProfileView user={currentUser} onLogout={logout} />
-        )}
-      </main>
-
-      {['discovery', 'messages', 'profile'].includes(view) && (
-        <BottomNav activeTab={view} onTabChange={(t) => setView(t as ViewState)} />
-      )}
-    </div>
-  );
-};
+  <div className="flex flex-col h-screen max-w-md mx-auto bg-white shadow-xl">
+    <h1 style={{ padding: 40 }}>
+      ✅ App successfully deployed on Netlify
+    </h1>
+  </div>
+);
 
 export default App;
