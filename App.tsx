@@ -92,11 +92,10 @@ const App: React.FC = () => {
   }, [swipedUserIds, maxDistance]);
 
   return (
-  <div className="flex flex-col h-screen max-w-md mx-auto bg-white shadow-xl">
-    <h1 style={{ padding: 40 }}>
-      ✅ App successfully deployed on Netlify
-    </h1>
-  </div>
-);
+    <div style={{ padding: 40 }}>
+      <h1>Dating App is running 🚀</h1>
+      <p>Netlify deploy works</p>
+    </div>
+  );
 
 export default App;
